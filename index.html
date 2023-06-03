@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr-TR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TYT ve AYT Dersleri</title>
     <style>
@@ -13,25 +12,25 @@
     <style>
 body {
   font-family: Arial, sans-serif;
-  background-color: #222;
-  color: #fff;
+  background-color: #222831;
+  color: white;
   margin: 0;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
-  color: #fff;
+  color: #00ADB5;
   font-size: 32px;
   margin-bottom: 20px;
 }
 
 h2 {
-  background-color: #333;
-  border-bottom: 1px solid #555;
+  background-color: #393E46;
+  border-bottom: 1px solid #EEEEEE;
   padding: 20px;
   text-align: center;
-  color: #fff;
+  color: #00ADB5;
   margin-top: 30px;
   font-size: 24px;
   margin-bottom: 10px;
@@ -52,12 +51,12 @@ td {
 
 th {
   background-color: #555555;
-  color: #fff;
+  color: #00ADB5;
   font-weight: bold;
 }
 
 a {
-  color: #fff;
+  color: #00ADB5;
   text-decoration: none;
 }
 
@@ -70,6 +69,7 @@ td {
   text-align: center;
   font-size: 18px;
   font-weight: bolder;
+  color: #EEEEEE;
 }
 
 .checkbox-label {
@@ -83,7 +83,7 @@ td {
 
 .sublink {
   background-color: #555555;
-  color: white;
+  color: #D4ADFC;
   border: 2px solid black;
   margin: 10px;
   padding: 10px;
@@ -108,12 +108,14 @@ td {
     <br>
 <hr>
 <script>
+// Sayfa yüklendiğinde kayıtlı sayaç değerini yükle
 window.addEventListener("DOMContentLoaded", function () {
   let tamamlananGorevSayisi = localStorage.getItem("tamamlananGorevSayisi");
   if (tamamlananGorevSayisi) {
     document.getElementById("sayac").textContent = "Tamamlanan Görev Sayısı: " + tamamlananGorevSayisi;
   }
 
+  // Start the countdown timer if it is still active
   let geriSayimSuresi = localStorage.getItem("geriSayimSuresi");
   if (geriSayimSuresi) {
     let kalanSure = Math.floor((geriSayimSuresi - new Date().getTime()) / 1000);
@@ -126,6 +128,7 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Görev tamamlandığında tetiklenecek fonksiyon
 function gorevTamamlandi(checkbox) {
   if (checkbox.checked) {
     sifirlaLocalStorage();
@@ -144,6 +147,7 @@ function gorevTamamlandi(checkbox) {
   }
 }
 
+// Sayaçı arttır ve değeri kaydet
 function arttirSayac() {
   let sayac = document.getElementById("sayac");
   let sayacDegeri = parseInt(sayac.textContent.split(":")[1].trim());
@@ -152,6 +156,7 @@ function arttirSayac() {
   kaydetSayac(sayacDegeri);
 }
 
+// Sayaçı azalt ve değeri kaydet
 function azaltSayac() {
   let sayac = document.getElementById("sayac");
   let sayacDegeri = parseInt(sayac.textContent.split(":")[1].trim());
@@ -162,12 +167,14 @@ function azaltSayac() {
   }
 }
 
+// Sayaç değerini tarayıcı hafızasına kaydet
 function kaydetSayac(deger) {
   localStorage.setItem("tamamlananGorevSayisi", deger);
 }
 
 let geriSayimTimeout;
 
+// Geri sayımı başlat
 function geriSayimiBaslat(saniye) {
   let geriSayim = document.getElementById("geriSayim");
   let bitisZamani = new Date().getTime() + (saniye * 1000);
@@ -196,6 +203,7 @@ function geriSayimiBaslat(saniye) {
   kaydetGeriSayim(bitisZamani);
 }
 
+// Geri sayımı durdur
 function geriSayimiDurdur() {
   clearTimeout(geriSayimTimeout);
   clearInterval(geriSayimInterval);
@@ -204,21 +212,25 @@ function geriSayimiDurdur() {
   sifirlaGeriSayim();
 }
 
+// Sayacı sıfırla ve değeri kaydet
 function sifirlaSayac() {
   let sayac = document.getElementById("sayac");
   sayac.textContent = "Tamamlanan Görev Sayısı: 0";
   kaydetSayac(0);
 }
 
+// Geri sayımı sıfırla
 function sifirlaGeriSayim() {
   localStorage.removeItem("geriSayimSuresi");
 }
 
+// Local storage'ı sıfırla
 function sifirlaLocalStorage() {
   localStorage.removeItem("tamamlananGorevSayisi");
   sifirlaGeriSayim();
 }
 
+// Geri sayım değerini kaydet
 function kaydetGeriSayim(bitisZamani) {
   localStorage.setItem("geriSayimSuresi", bitisZamani);
 }
@@ -382,6 +394,7 @@ Olasılık
 
     </b>
         </pre>
+    <!-- TYT Matematik konularının içeriği buraya gelebilir -->
 
     <h2 id="geometri">TYT GEOMETRİ</h2>
     <pre style="font-size: large;"><b>
@@ -414,6 +427,7 @@ Dik Piramit
 
     </b>
         </pre>
+    <!-- TYT Geometri konularının içeriği buraya gelebilir -->
 
     <h2 id="fizik">TYT FİZİK</h2>
     <pre style="font-size: large;"><b>
@@ -436,6 +450,7 @@ Fiziğin Doğası
 
     </b>
         </pre>
+    <!-- TYT Fizik konularının içeriği buraya gelebilir -->
 
     <h2 id="kimya">TYT KİMYA</h2>
     <pre style="font-size: large;"><b>
@@ -455,6 +470,7 @@ Kimya Her Yerde
 
     </b>
         </pre>
+    <!-- TYT Kimya konularının içeriği buraya gelebilir -->
 
     <h2 id="biyoloji">TYT BİYOLOJİ</h2>
     <pre style="font-size: large;"><b>
@@ -471,6 +487,7 @@ Ekosistem Ekolojisi
         
     </b>
         </pre>
+    <!-- TYT Biyoloji konularının içeriği buraya gelebilir -->
 
     <h2 id="tarih">TYT TARİH</h2>
     <pre style="font-size: large;"><b>
@@ -499,6 +516,7 @@ Atatürk Dönemi Türk Dış Politikası
         
     </b>
         </pre>
+    <!-- TYT Tarih konularının içeriği buraya gelebilir -->
 
     <h2 id="cografya">TYT COĞRAFYA</h2>
     <pre style="font-size: large;"><b>
@@ -526,16 +544,19 @@ Doğal Afetler
         
     </b>
         </pre>
+    <!-- TYT Coğrafya konularının içeriği buraya gelebilir -->
 
     
         
     </b>
         </pre>
+    <!-- TYT Felsefe konularının içeriği buraya gelebilir -->
 
     
         
     </b>
         </pre>
+    <!-- TYT Din Kültürü konularının içeriği buraya gelebilir -->
 
     <h2 id="matematik-ayt"> AYT MATEMATİK</h2>
     <pre style="font-size: large;"><b>
@@ -559,6 +580,7 @@ Belirli İntegral
         
     </b>
         </pre>
+    <!-- AYT Matematik konularının içeriği buraya gelebilir -->
 
     <h2 id="geometri-ayt"> AYT GEOMETRİ</h2>
     <pre style="font-size: large;"><b>
@@ -588,6 +610,7 @@ Silindir-Koni-Küre
         
     </b>
         </pre>
+    <!-- AYT Geometri konularının içeriği buraya gelebilir -->
 
     <h2 id="fizik-ayt"> AYT FİZIK</h2>
     <pre style="font-size: large;"><b>
@@ -614,6 +637,7 @@ Modern Fiziğin Teknolojideki Uygulamaları
 
     </b>
         </pre>
+    <!-- AYT Fizik konularının içeriği buraya gelebilir -->
 
     <h2 id="kimya-ayt"> AYT KİMYA</h2>
     <pre style="font-size: large;"><b>
@@ -641,6 +665,7 @@ Enerji Kaynakları ve Bilimsel Gelişmeler
 
     </b>
         </pre>
+    <!-- AYT Kimya konularının içeriği buraya gelebilir -->
 
     <h2 id="biyoloji-ayt"> AYT BİYOLOJİ</h2>
     <pre style="font-size: large;"><b>
@@ -662,5 +687,6 @@ Canlılar ve Çevre
 
     </b>
         </pre>
+    <!-- AYT Biyoloji konularının içeriği buraya gelebilir -->
 </body>
 </html>
